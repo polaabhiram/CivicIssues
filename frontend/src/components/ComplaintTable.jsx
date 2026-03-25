@@ -29,10 +29,14 @@ const ComplaintTable = ({ data }) => {
             <td>{item.text}</td>
             <td>{item.sector}</td>
             <td>{item.severity}</td>
-            <td style={{ color: getColor(item.priority) }}>
+            <td className={`priority-${item.priority.toLowerCase()}`}>
               {item.priority}
             </td>
-            <td>{item.location}</td>
+            <td>
+              {item.location
+                ? `${item.location.lat.toFixed(4)}, ${item.location.lng.toFixed(4)}`
+                : "N/A"}
+            </td>
           </tr>
         ))}
       </tbody>

@@ -2,9 +2,15 @@ import React from "react";
 import ComplaintTable from "../components/ComplaintTable";
 
 const GlobalDashboard = ({ data }) => {
-  const sorted = [...data].sort((a, b) =>
-    b.priority.localeCompare(a.priority)
-  );
+  const priorityOrder = {
+  Critical: 4,
+  High: 3,
+  Medium: 2,
+  Low: 1
+  };
+  const sorted = [...data].sort(
+  (a, b) => priorityOrder[b.priority] - priorityOrder[a.priority]
+);
 
   return (
     <div>
